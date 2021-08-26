@@ -2,6 +2,8 @@
   <div class="submit-form mw-100 w-50">
     <div class="border border-dark shadow-lg p-3 mb-5 bg-white rounded col-md-12" v-if="!submitted">
       <div class="form-group">
+        <h4>Nuevo Tutorial</h4>
+        <hr>
         <label for="title">Titulo</label>
         <input
           type="text"
