@@ -1,9 +1,12 @@
 <template>
-  <div v-if="currentTutorial" class="edit-form  ">
-    <h4>Tutorial</h4>
+  <div v-if="currentTutorial" class="edit-form mw-100 w-50" style="max-width:300px;margin:auto">
+    <div class="border border-dark shadow-lg p-3 mb-5 bg-white rounded col-md-12">
     <form>
+      
       <div class="form-group">
-        <label for="title">Titulo</label>
+        <h4>Editar Tutorial</h4>
+        <hr>
+        <label for="title" style="padding-bottom:10px">Titulo</label>
         <input
           type="text"
           class="form-control"
@@ -12,7 +15,7 @@
         />
       </div>
       <div class="form-group">
-        <label for="description">Descripcion</label>
+        <label for="description" style="padding-bottom:10px;padding-top:10px">Descripción</label>
         <input
           type="text"
           class="form-control"
@@ -22,7 +25,7 @@
       </div>
 
       <div class="form-group">
-        <label><strong>Estado:</strong></label>
+        <label style="padding-top:10px"><strong>Estado:</strong></label>
         {{ currentTutorial.published ? "Publicado" : "Pendiente" }}
         <p style="color:red;margin-top:15px">{{ message }}</p>
       </div>
@@ -54,16 +57,19 @@
         <template v-slot:header> Eliminar </template>
 
         <template v-slot:body
-          >Esta seguro que desea eliminar el tutorial?</template
+          >Está seguro que desea eliminar el tutorial?</template
         >
 
-        <template v-slot:footer> Sera eliminado permanentemente!</template> />
+        <template v-slot:footer> Será eliminado permanentemente!</template> />
       </Modal>
 
       <button type="submit" class="btn btn-success m-2" @click="updateTutorial">
         Actualizar
       </button>
+      
     </div>
+    
+  </div>
   </div>
 </template>
 
@@ -107,13 +113,13 @@ export default {
 
     updateTutorial() {
       if (!this.currentTutorial.title) {
-        this.message = "Titulo requerido";
+        this.message = "Título requerido";
       } else {
         TutorialDataService.update(
           this.currentTutorial.id,
           this.currentTutorial
         ).then(() => {
-          this.message = "El tutorial se actualizo correctamente!";
+          this.message = "El tutorial se actualizó correctamente!";
         });
       }
     },
@@ -137,6 +143,6 @@ export default {
   margin: auto;
 }
 .btn {
-  padding:.500rem .500rem;
+  padding: 0.5rem 0.5rem;
 }
 </style>
